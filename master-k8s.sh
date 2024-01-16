@@ -11,7 +11,7 @@ NODENAME=$(hostname -s)
 
 sudo kubeadm config images pull
 
-sudo kubeadm init --control-plane-endpoint="$MASTER_PUBLIC_IP" --apiserver-cert-extra-sans="$MASTER_PUBLIC_IP" --pod-network-cidr="$POD_CIDR" --node-name "$NODENAME" --ignore-preflight-errors Swap
+sudo kubeadm init --ignore-preflight-errors Swap
 
 
 # Configure kubeconfig
