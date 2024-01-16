@@ -18,6 +18,8 @@ sudo apt-get update -y
 sudo apt-get update
 sudo apt-get install docker.io
 
+docker login
+
 sudo systemctl daemon-reload
 sudo systemctl enable docker --now
 
