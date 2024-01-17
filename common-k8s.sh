@@ -37,9 +37,6 @@ sudo apt-get install -y kubelet="$KUBERNETES_VERSION" kubectl="$KUBERNETES_VERSI
 sudo apt-get update -y
 sudo apt-get install -y jq
 
-#install calico
-wget https://docs.projectcalico.org/manifests/calico.yaml 
-kubectl apply -f calico.yaml
 
 local_ip="$(ip --json addr show eth0 | jq -r '.[0].addr_info[] | select(.family == "inet") | .local')"
 cat > /etc/default/kubelet << EOF
