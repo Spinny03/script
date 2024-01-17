@@ -2,8 +2,6 @@
 #
 # Common setup for all servers (Control Plane and Nodes)
 
-set -euxo pipefail
-
 # Variable Declaration
 
 KUBERNETES_VERSION="1.28.1-00"
