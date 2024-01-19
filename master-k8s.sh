@@ -21,6 +21,6 @@ sudo chown "$(id -u)":"$(id -g)" "$HOME"/.kube/config
 
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/tigera-operator.yaml
 
-wget https://github.com/derailed/k9s/releases/download/v0.31.5/k9s_linux_arm.deb
+wget https://github.com/derailed/k9s/releases/download/v0.31.5/k9s_linux_amd64.deb
 
-sudo apt install ./k9s_linux_arm.deb
+sudo apt install ./k9s_linux_amd64.deb
