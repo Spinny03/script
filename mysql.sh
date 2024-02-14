@@ -31,8 +31,7 @@ hostname=10.10.10.11" | sudo tee /var/lib/mysql-cluster/config.ini > /dev/null
 
 sudo touch /etc/systemd/system/ndb_mgmd.service
 
-echo
-"[Unit]
+echo "[Unit]
 Description=MySQL NDB Cluster Management Server
 After=network.target auditd.service
 
@@ -67,8 +66,7 @@ sudo dpkg -i mysql-cluster-community-server_8.0.36-1ubuntu22.04_amd64.deb
 
 sudo dpkg -i mysql-server_8.0.36-1ubuntu22.04_amd64.deb
 
-echo 
-"!includedir /etc/mysql/conf.d/
+echo "!includedir /etc/mysql/conf.d/
 !includedir /etc/mysql/mysql.conf.d/
 [mysqld]
 # Options for mysqld process:
@@ -77,7 +75,7 @@ ndbcluster                      # run NDB storage engine
 [mysql_cluster]
 # Options for NDB Cluster processes:
 ndb-connectstring=10.10.10.11  # location of management server
-"  | sudo tee /etc/mysql/my.cnf > /dev/null
+" | sudo tee /etc/mysql/my.cnf > /dev/null
 
 sudo systemctl restart mysql
 sudo systemctl enable mysql
