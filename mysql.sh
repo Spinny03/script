@@ -37,8 +37,7 @@ sudo pkill -f ndb_mgmd
 sudo touch /etc/systemd/system/ndb_mgmd.service
 
 echo
-"
-[Unit]
+"[Unit]
 Description=MySQL NDB Cluster Management Server
 After=network.target auditd.service
 
@@ -50,8 +49,7 @@ KillMode=process
 Restart=on-failure
 
 [Install]
-WantedBy=multi-user.target
-" | sudo tee /etc/systemd/system/ndb_mgmd.service > /dev/null
+WantedBy=multi-user.target" | sudo tee /etc/systemd/system/ndb_mgmd.service > /dev/null
 
 sudo systemctl daemon-reload
 sudo systemctl enable ndb_mgmd
