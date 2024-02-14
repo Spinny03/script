@@ -34,6 +34,8 @@ sudo ndb_mgmd -f /var/lib/mysql-cluster/config.ini
 
 sudo pkill -f ndb_mgmd
 
+sudo touch /etc/systemd/system/ndb_mgmd.service
+
 sudo echo
 "
 [Unit]
