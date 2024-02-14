@@ -4,6 +4,8 @@ sudo dpkg -i mysql-cluster-community-management-server_8.0.36-1ubuntu22.04_amd64
 
 sudo mkdir /var/lib/mysql-cluster
 
+touch /var/lib/mysql-cluster/config.ini
+
 sudo echo
 "[ndbd default]
 # Options affecting ndbd processes on all data nodes:
