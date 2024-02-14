@@ -6,8 +6,7 @@ sudo mkdir /var/lib/mysql-cluster
 
 sudo touch /var/lib/mysql-cluster/config.ini
 
-sudo echo
-"[ndbd default]
+echo "[ndbd default]
 # Options affecting ndbd processes on all data nodes:
 NoOfReplicas=2	# Number of replicas
 
@@ -28,7 +27,8 @@ datadir=/usr/local/mysql/data	# Remote directory for the data files
 
 [mysqld]
 # SQL node options:
-hostname=10.10.10.11" > /var/lib/mysql-cluster/config.ini
+hostname=10.10.10.11" | sudo tee /var/lib/mysql-cluster/config.ini > /dev/null
+
 
 sudo ndb_mgmd -f /var/lib/mysql-cluster/config.ini
 
@@ -36,7 +36,7 @@ sudo pkill -f ndb_mgmd
 
 sudo touch /etc/systemd/system/ndb_mgmd.service
 
-sudo echo
+echo
 "
 [Unit]
 Description=MySQL NDB Cluster Management Server
@@ -51,7 +51,7 @@ Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
-" > /etc/systemd/system/ndb_mgmd.service
+" | sudo tee /etc/systemd/system/ndb_mgmd.service > /dev/null
 
 sudo systemctl daemon-reload
 sudo systemctl enable ndb_mgmd
@@ -74,7 +74,7 @@ sudo dpkg -i mysql-cluster-community-server_8.0.36-1ubuntu22.04_amd64.deb
 
 sudo dpkg -i mysql-server_8.0.36-1ubuntu22.04_amd64.deb
 
-sudo echo 
+echo 
 "!includedir /etc/mysql/conf.d/
 !includedir /etc/mysql/mysql.conf.d/
 [mysqld]
@@ -84,7 +84,8 @@ ndbcluster                      # run NDB storage engine
 [mysql_cluster]
 # Options for NDB Cluster processes:
 ndb-connectstring=10.10.10.11  # location of management server
-"  > /etc/mysql/my.cnf
+"  | sudo tee /etc/mysql/my.cnf > /dev/null
+
 sudo systemctl restart mysql
 sudo systemctl enable mysql
 
