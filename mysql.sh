@@ -70,7 +70,18 @@ sudo dpkg -i mysql-cluster-community-server_8.0.36-1ubuntu22.04_amd64.deb
 
 sudo dpkg -i mysql-server_8.0.36-1ubuntu22.04_amd64.deb
 
-sudo nano /etc/mysql/my.cnf
+sudo echo 
+"!includedir /etc/mysql/conf.d/
+!includedir /etc/mysql/mysql.conf.d/
+[mysqld]
+# Options for mysqld process:
+ndbcluster                      # run NDB storage engine
 
+[mysql_cluster]
+# Options for NDB Cluster processes:
+ndb-connectstring=10.10.10.11  # location of management server
+"  > /etc/mysql/my.cnf
+sudo systemctl restart mysql
+sudo systemctl enable mysql
 
 
