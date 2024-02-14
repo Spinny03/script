@@ -29,11 +29,6 @@ datadir=/usr/local/mysql/data	# Remote directory for the data files
 # SQL node options:
 hostname=10.10.10.11" | sudo tee /var/lib/mysql-cluster/config.ini > /dev/null
 
-
-sudo ndb_mgmd -f /var/lib/mysql-cluster/config.ini
-
-sudo pkill -f ndb_mgmd
-
 sudo touch /etc/systemd/system/ndb_mgmd.service
 
 echo
